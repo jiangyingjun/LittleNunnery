@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.shuai.TestActivity">
+
+    <com.shuai.view.MyScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:fillViewport="true">
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <com.shuai.view.MyRecyclerView
+            android:id="@+id/recyclview"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:background="@color/white_snow"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+    </com.shuai.view.MyScrollView>
+
+</LinearLayout>

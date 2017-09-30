@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_snow"
+    tools:context="com.shuai.TestYeGouActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/splash_et_key"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="key"
+            android:gravity="center"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/splash_et_value"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="value"
+            android:gravity="center"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <!--<ImageView-->
+    <!--android:id="@+id/splash_img"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:src="@mipmap/ic_launcher" />-->
+    <!--互用登录推出操作-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/splash_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="登录" />
+
+        <Button
+            android:id="@+id/splash_btn_exit_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="推出登录"/>
+        <Button
+            android:id="@+id/splash_btn_userinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="用户信息"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/splash_btn_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="添加数据"/>
+
+        <Button
+            android:id="@+id/splash_btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="修改数据"/>
+
+        <Button
+            android:id="@+id/splash_btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="删除数据"/>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        >
+        <Button
+            android:id="@+id/splash_btn_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转视频页面"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/splash_btn_meitiliu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="媒体流"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/splash_interface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="调用接口"/>
+
+
+</LinearLayout>

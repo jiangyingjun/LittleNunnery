@@ -1,0 +1,2 @@
+include ':app', ':faceppsdk'
+project(':faceppsdk').projectDir = new File('sdk')
