@@ -7,6 +7,8 @@ package com.shuai.utils
 interface Config {
     companion object {
 
+        val DB_NAME="jyj_gilgilai"
+
         val HOST_URL_STR = "http://localhost:8080/"
         val DIRCETOYR="jyj"
         val FileProvider_Name="com.shuai.fileprovider"

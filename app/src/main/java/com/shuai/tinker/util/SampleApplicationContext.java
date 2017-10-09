@@ -16,10 +16,9 @@
 
 package com.shuai.tinker.util;
 
-import android.app.Application;
 import android.content.Context;
 
-import com.shuai.BaseApplication;
+import com.shuai.app.BaseApplication;
 
 
 /**

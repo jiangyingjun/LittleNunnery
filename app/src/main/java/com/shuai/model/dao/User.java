@@ -16,11 +16,21 @@ public class User {
 
     private int age;
 
-    @Generated(hash = 446251977)
-    public User(long id, String name, int age) {
+    private String password;
+
+    private int gender;
+
+    private String address;
+
+    @Generated(hash = 1305094618)
+    public User(long id, String name, int age, String password, int gender,
+            String address) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.password = password;
+        this.gender = gender;
+        this.address = address;
     }
 
     @Generated(hash = 586692638)
@@ -51,6 +61,29 @@ public class User {
         this.age = age;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getGender() {
+        return this.gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
 
 

@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.shuai.R
 import com.shuai.adapter.main.MainActivitysRecyclerViewAdapter
 import com.shuai.base.BaseActivity
+import com.shuai.model.gen.GreenDaoManager
 import kotlinx.android.synthetic.main.activity_mains.*
 
 /**
@@ -54,6 +55,12 @@ class MainActivitys :BaseActivity(){
                 mHandler.post(Runnable {
                     kotlin.run {
                         mains_btn.text="postrunable"
+
+                       var userdao= GreenDaoManager.getInstance().daoSession.userDao
+
+                        var numcount=userdao.count()
+
+                        Toast.makeText(this@MainActivitys,numcount.toString(),Toast.LENGTH_SHORT).show()
                     }
                 })
 
