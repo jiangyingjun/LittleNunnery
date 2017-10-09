@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'org.greenrobot.greendao'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -97,9 +97,20 @@ android {
         disable 'MissingTranslation'
     }
 
+
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+
+    }
+
+
+
+
     greendao {
         schemaVersion 1
-        daoPackage 'com.shuai.model.dao'
+        daoPackage 'com.shuai.model.gen'
         targetGenDir 'src/main/java'
     }
 
@@ -210,6 +221,12 @@ repositories {
         dirs 'libs'
     }
 }
+
+
+
+
+
+
 def bakPath = file("${buildDir}/bakApk/")
 //if(!bakPath.isFile()){
 //    bakPath.mkdir()
