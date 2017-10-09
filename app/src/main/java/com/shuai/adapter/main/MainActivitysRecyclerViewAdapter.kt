@@ -8,11 +8,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.shuai.R
 import com.shuai.face.FacePPActivity
 import com.shuai.face.FaceppActionActivity
+import com.shuai.utils.glide.GlideImageLoader
 
 /**
  * Created by jiangyingjun on 2017/9/26.
@@ -27,12 +29,14 @@ class MainActivitysRecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.Vie
     val  NORMAL_VIEW=1
     val  FOOTER_VIEW=2
 
-
+    var imageLoader:GlideImageLoader?=null
     constructor(context: Context, list: ArrayList<String>) : this() {
 
         this.mContext=context
         this.mData=list
         LayoutInflater.from(context)
+
+        imageLoader=  GlideImageLoader(context)
     }
 
 
@@ -89,6 +93,8 @@ class MainActivitysRecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.Vie
             }
 
             holder.item_text.text=mData[position]
+            imageLoader!!.display(holder.item_img, "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507530011&di=bfb2fd33b8eca2f3713b363d9a7b4de8&src=http://image.uczzd.cn/16729767241092375647.jpeg?id=0&from=export")
+
         }
 
     }
@@ -100,6 +106,7 @@ class MainActivitysRecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.Vie
 
         val item_text=itemView!!.findViewById(R.id.item_mains_text) as TextView
 
+        val item_img=itemView!!.findViewById(R.id.item_mians_img) as ImageView
     }
 
 
