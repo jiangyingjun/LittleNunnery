@@ -32,7 +32,7 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
 
         initData()
         initView()
-        network()
+//        network()
 
 
 
@@ -55,8 +55,8 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
         when(v!!.id){
             R.id.sp_start_img->{
 
-                network()
-
+//                network()
+                    goToMain()
             }
 
 

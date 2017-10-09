@@ -399,7 +399,6 @@ public class OpenglActivity extends Activity
     @Override
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
         // TODO Auto-generated method stub
-
     }
 
     @Override

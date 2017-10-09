@@ -36,8 +36,9 @@ object NetWorks {
         @POST("/login/login")
         fun login(@Body requestDTO: RequestDTO):Observable<ReceiveDTO>
 
-
-        fun FacePPdetectApi(@Url url: String):Observable<String>
+        @FormUrlEncoded
+        @POST
+        fun FacePPdetectApi(@Url url: String,@FieldMap map: Map<String,String>):Observable<String>
 
 
         @POST("/start/img")
@@ -76,8 +77,8 @@ object NetWorks {
     }
 
 
-    fun FacePPdetectApi(url: String,observer:Observer<String>){
-        setSubscribe(service.FacePPdetectApi(url),observer)
+    fun facePPdetectApi(url: String, map: Map<String, String>, observer:Observer<String>){
+        setSubscribe(service.FacePPdetectApi(url,map),observer)
 
     }
 
