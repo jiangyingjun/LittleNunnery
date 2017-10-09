@@ -1,4 +1,4 @@
-package com.shuai;
+package com.shuai.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -43,6 +43,7 @@ public class BaseApplication  extends DefaultApplicationLike {
 
         Tinker tinker = Tinker.with(getApplication());
 
+        InitializeAppConfigService.Companion.start();
 
 
     }
@@ -59,8 +60,11 @@ public class BaseApplication  extends DefaultApplicationLike {
 //        }
 //        refWatcher = LeakCanary.install(getApplication());
 //        GreenDaoManager.getInstance();
-        CrashHandler crashHandler = CrashHandler.getInstance();
-        crashHandler.init(getApplication());
+
+
+
+
+
     }
 
 //    public static RefWatcher getRefWatcher(BaseApplication application) {

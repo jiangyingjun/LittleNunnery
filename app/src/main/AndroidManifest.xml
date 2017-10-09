@@ -59,7 +59,7 @@
         </activity>
 
         <activity android:name=".TestActivity" />
-
+        <service android:name=".app.InitializeAppConfigService"/>
         <!-- 野狗通讯 -->
         <!--<receiver android:name="com.wilddog.client.receiver.WilddogAuthCastReceiver">-->
             <!--<intent-filter>-->

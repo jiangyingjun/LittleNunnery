@@ -21,19 +21,19 @@ public class GlideImageLoader {
     }
 
 
-    public GlideImageLoader(){}
-
-    public static GlideImageLoader getInstance(){
-
-        if (instance==null){
-
-
-            instance = new GlideImageLoader();
-        }
-
-
-        return instance;
-    }
+//    public GlideImageLoader(){}
+//
+//    public static GlideImageLoader getInstance(){
+//
+//        if (instance==null){
+//
+//
+//            instance = new GlideImageLoader();
+//        }
+//
+//
+//        return instance;
+//    }
 
 
 

@@ -1,12 +1,6 @@
 package com.shuai.base
 
-import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.shuai.BaseApplication
-import com.shuai.tinker.util.SampleApplicationContext
 
 /**
  * Created by jiangyingjun on 2017/8/4.
