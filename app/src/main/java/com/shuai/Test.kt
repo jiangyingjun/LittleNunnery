@@ -1,18 +1,19 @@
 package com.shuai
 
-import android.content.Context
-
-import com.shuai.utils.glide.GlideImageLoader
+import com.google.gson.Gson
+import com.shuai.model.bean.ReceiveDTO
 
 /**
- * Created by jiangyingjun on 2017/9/25.
+ * Created by reacmedia on 2017/10/6.
  */
 
 class Test {
 
 
-    private var loader: GlideImageLoader? = null
-    internal fun funs(context: Context) {
-        loader = GlideImageLoader(context)
+    internal fun `fun`() {
+
+        Gson().fromJson("slkkh", ReceiveDTO::class.java)
+
+
     }
 }

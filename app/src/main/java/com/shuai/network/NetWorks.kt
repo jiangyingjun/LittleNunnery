@@ -41,7 +41,7 @@ object NetWorks {
 
 
         @POST("/start/img")
-        fun startAppPacture():Observable<ReceiveDTO>
+        fun startAppPacture(): Observable<String>
 
 
     }
@@ -58,7 +58,7 @@ object NetWorks {
     }
 
 
-    fun getStartAppPacture( observer: Observer<ReceiveDTO>) {
+    fun getStartAppPacture(observer: Observer<String>) {
         setSubscribe(service.startAppPacture(), observer)
     }
 

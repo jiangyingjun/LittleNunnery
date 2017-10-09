@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.shuai.R
@@ -14,9 +13,9 @@ import com.shuai.adapter.main.MainFragmentAdapter
 import com.shuai.fragment.main.mainFragment
 import com.shuai.fragment.main.myFragment
 import com.shuai.utils.Config
-import org.json.JSONObject
-import java.io.File
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
+
 class MainActivity : FragmentActivity(), View.OnClickListener, ViewPager.OnPageChangeListener {
 
 

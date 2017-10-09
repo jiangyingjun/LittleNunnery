@@ -2,9 +2,12 @@ package com.shuai
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.gson.Gson
 import com.shuai.activity.home.MainActivitys
 import com.shuai.base.BaseActivity
 import com.shuai.model.bean.ReceiveDTO
@@ -12,6 +15,7 @@ import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
 import com.shuai.utils.glide.GlideImageLoader
 import kotlinx.android.synthetic.main.activity_splash.*
+import org.json.JSONObject
 
 
 class SplashActivity : BaseActivity(), View.OnClickListener {
@@ -25,6 +29,23 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
 
     var imgLoader:GlideImageLoader?=null
 
+
+    private var mHandler = object : Handler() {
+        override fun handleMessage(msg: Message?) {
+            super.handleMessage(msg)
+
+            when (msg!!.what) {
+                1 -> {
+                    goToMain()
+                }
+            }
+
+        }
+
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -34,7 +55,7 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
         initView()
         network()
 
-
+        mHandler.sendEmptyMessageDelayed(1, 3000)
 
 }
 
@@ -83,7 +104,7 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
     private fun network(){
 
 
-        var aa=object : NetWorksSubscriber<ReceiveDTO>() {
+        var aa = object : NetWorksSubscriber<String>() {
             override fun onCompleted() {
                 super.onCompleted()
 
@@ -91,19 +112,23 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
 
             }
 
-            override fun onNext(s: ReceiveDTO) {
+            override fun onNext(s: String) {
                 super.onNext(s)
                 displayView()
-                Log.e("jyj-->",s.content)
-                Toast.makeText(this@SplashActivity,s.content, Toast.LENGTH_LONG).show()
+                Log.e("jyj-->", s)
+                Toast.makeText(this@SplashActivity, s, Toast.LENGTH_LONG).show()
+                var netResult = Gson().fromJson(s, ReceiveDTO::class.java)
 
+                var jsonResult = JSONObject().getJSONObject(netResult.jsonResult)
+
+                imgLoader!!.display(sp_start_img, jsonResult.getString("img"))
             }
 
             override fun onError(e: Throwable) {
                 super.onError(e)
                 Log.e("jyj-->",e.toString())
                 Toast.makeText(this@SplashActivity,e.toString(), Toast.LENGTH_LONG).show()
-                goToMain()
+//                goToMain()
             }
         }
 
@@ -119,7 +144,7 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
 
        var intent= Intent(this@SplashActivity,MainActivitys::class.java)
         startActivity(intent)
-
+        finish()
 
     }
 
