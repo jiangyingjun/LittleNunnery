@@ -101,8 +101,8 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
 
             override fun onError(e: Throwable) {
                 super.onError(e)
-                Log.e("jyj-->",e.toString())
-                Toast.makeText(this@SplashActivity,e.toString(), Toast.LENGTH_LONG).show()
+//                Log.e("jyj-->",e.toString())
+//                Toast.makeText(this@SplashActivity,e.toString(), Toast.LENGTH_LONG).show()
                 goToMain()
             }
         }

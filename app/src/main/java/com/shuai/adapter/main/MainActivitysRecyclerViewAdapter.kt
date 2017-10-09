@@ -11,9 +11,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.megvii.facepp.sdk.Facepp
+import com.megvii.licensemanager.sdk.LicenseManager
 import com.shuai.R
+import com.shuai.face.ConUtil
 import com.shuai.face.FacePPActivity
 import com.shuai.face.FaceppActionActivity
+import com.shuai.utils.Config
 import com.shuai.utils.glide.GlideImageLoader
 
 /**
@@ -81,8 +85,7 @@ class MainActivitysRecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.Vie
 
             holder.item_card.setOnClickListener {
 
-                var intent=Intent(mContext,FaceppActionActivity::class.java)
-                mContext!!.startActivity(intent)
+               initData()
 
             }
 
@@ -116,5 +119,56 @@ class MainActivitysRecyclerViewAdapter() : RecyclerView.Adapter<RecyclerView.Vie
         val item_text=itemView!!.findViewById(R.id.textView) as TextView
 
     }
+
+
+    /**
+     *
+     * 获取face++的联网授权
+     *
+     * */
+    private fun initData() {
+
+        val licenseManager = LicenseManager(mContext)
+        licenseManager.setExpirationMillis(Facepp.getApiExpirationMillis(mContext, ConUtil.getFileContent(mContext, R.raw
+                .megviifacepp_0_4_7_model)))
+
+        val uuid = ConUtil.getUUIDString(mContext)
+        val apiName = Facepp.getApiName()
+
+        licenseManager.setAuthTimeBufferMillis(0)
+
+        licenseManager.takeLicenseFromNetwork(uuid, Config.FACE_PP_API_KEY, Config.FACE_PP_API_SECRET, apiName,
+                LicenseManager.DURATION_30DAYS, "Landmark", "1", true, object : LicenseManager.TakeLicenseCallback {
+
+            override fun onSuccess() {
+                authState(true)
+            }
+
+            override  fun onFailed(i: Int, bytes: ByteArray) {
+                Log.e("jyj-->", String(bytes))
+                authState(false)
+            }
+        })
+
+
+    }
+
+
+
+    private fun authState(isSuccess: Boolean) {
+        if (isSuccess) {
+
+            val intent = Intent()
+            intent.setClass(mContext, FaceppActionActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP//If set, and the activity being launched is already running in the current task, then instead of launching a new instance of that activity,all of the other activities on top of it will be closed and this Intent will be delivered to the (now on top) old activity as a new Intent.
+            mContext!!.startActivity(intent)
+
+        } else {
+//            WarrantyBar.setVisibility(View.GONE)
+//            againWarrantyBtn.setVisibility(View.VISIBLE)
+//            WarrantyText.setText(resources.getString(R.string.auth_fail))
+        }
+    }
+
 
 }

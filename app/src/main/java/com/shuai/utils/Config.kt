@@ -19,9 +19,10 @@ interface Config {
 
 
 
-        val FACE_PP_API_KEY="DyDCpXORIHjoLoE2D7e2x4Vq2Ew27Bbl"
+        val FACE_PP_API_KEY="dkk5SQXb7bUw1Pqh_S9lJ7M5_S3Qu3yQ"
 
-        val FACE_PP_API_SECRET="pO4R_zdWznTIDSD7Gl2woTBcfjf-miHz"
+        val FACE_PP_API_SECRET="hMhemjYrzvVYpcs7Hu_B-Sf8nexXvz2W"
+
         var FORMAT_USER_AGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
 
     }

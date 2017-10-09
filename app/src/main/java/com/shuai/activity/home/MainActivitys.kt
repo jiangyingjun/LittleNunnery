@@ -39,12 +39,6 @@ class MainActivitys :BaseActivity(){
         initView()
 
 
-//        mHandler.post(Runnable {
-//            kotlin.run {
-//                mains_btn.text="postrunable"
-//            }
-//        })
-
         mHandler.sendEmptyMessage(0)
 
 
