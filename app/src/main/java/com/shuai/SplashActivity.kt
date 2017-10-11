@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.gson.Gson
 import com.shuai.activity.home.MainActivitys
 import com.shuai.base.BaseActivity
+import com.shuai.model.bean.LocalEntry
 import com.shuai.model.bean.ReceiveDTO
 import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
@@ -143,7 +144,17 @@ class SplashActivity : BaseActivity(), View.OnClickListener {
     private fun goToMain(){
 
        var intent= Intent(this@SplashActivity,MainActivitys::class.java)
+
+
+        var list = ArrayList<String>()
+        val add = list.add("jyj")
+        var localEntry = LocalEntry()
+
+        localEntry.aa = "33333"
+        intent.putExtra("data2", localEntry)
+        intent.putStringArrayListExtra("data", list)
         startActivity(intent)
+
         finish()
 
     }

@@ -14,6 +14,7 @@ import com.bumptech.glide.load.Encoder
 import com.shuai.R
 import com.shuai.adapter.main.MainActivitysRecyclerViewAdapter
 import com.shuai.base.BaseActivity
+import com.shuai.model.bean.LocalEntry
 import com.shuai.model.bean.ReceiveDTO
 import com.shuai.model.gen.GreenDaoManager
 import com.shuai.network.NetWorks
@@ -48,6 +49,13 @@ class MainActivitys :BaseActivity(){
 
         mHandler.sendEmptyMessage(0)
 
+        var list = intent.getStringArrayListExtra("data")
+
+
+        var d = intent.getParcelableExtra<LocalEntry>("data2")
+
+
+        Log.e("jyj-->", list.size.toString() + "    " + d.aa)
 
         mains_btn.setOnClickListener {
 
