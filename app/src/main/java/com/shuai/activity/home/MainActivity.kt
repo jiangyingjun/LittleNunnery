@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : FragmentActivity(), View.OnClickListener, ViewPager.OnPageChangeListener {
 
 
-
+    var log="MainActivity-->"
     private var mainAdapter : MainFragmentAdapter?=null
 
     var fm : FragmentManager?=null
@@ -160,8 +160,23 @@ class MainActivity : FragmentActivity(), View.OnClickListener, ViewPager.OnPageC
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Log.e(log,"onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.e(log,"onStop")
+    }
 
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.e(log,"ondestory")
+
+    }
 
 }
 

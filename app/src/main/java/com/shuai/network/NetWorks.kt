@@ -4,6 +4,7 @@ package com.shuai.network
 import com.shuai.model.bean.ReceiveDTO
 import com.shuai.model.bean.RequestDTO
 import com.shuai.utils.Config
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.http.*
@@ -37,8 +38,9 @@ object NetWorks {
         fun login(@Body requestDTO: RequestDTO):Observable<ReceiveDTO>
 
         @FormUrlEncoded
+        @Multipart
         @POST
-        fun FacePPdetectApi(@Url url: String,@FieldMap map: Map<String,String>):Observable<String>
+        fun FacePPdetectApi(@Url url: String,@FieldMap map: Map<String,String>,@Part img_file: MultipartBody.Part):Observable<String>
 
 
         @POST("/start/img")
@@ -77,8 +79,8 @@ object NetWorks {
     }
 
 
-    fun facePPdetectApi(url: String, map: Map<String, String>, observer:Observer<String>){
-        setSubscribe(service.FacePPdetectApi(url,map),observer)
+    fun facePPdetectApi(url: String, map: Map<String, String>,img_file: MultipartBody.Part, observer:Observer<String>){
+        setSubscribe(service.FacePPdetectApi(url,map,img_file),observer)
 
     }
 

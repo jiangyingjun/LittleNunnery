@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_main.*
  * Created by jiangyingjun on 2017/6/5.
  */
 class  mainFragment: BaseFragment() {
+
+    var  log="mainFragment-->"
 
     private  var rootView:View?=null
     private  var fragment_main_recycler:RecyclerView?=null
@@ -101,5 +104,32 @@ class  mainFragment: BaseFragment() {
     }
 
 
+    override fun onPause() {
+        super.onPause()
+
+        Log.e(log,"onPause")
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        Log.e(log,"onStop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e(log,"onDestroy")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.e(log,"onDestroyView")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.e(log,"onDetach")
+    }
 
 }

@@ -1,26 +1,30 @@
 package com.shuai.activity.home
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Base64
 import android.util.Log
-import android.util.Xml
-import android.view.View
 import android.widget.Toast
-import com.bumptech.glide.load.Encoder
+import com.bumptech.glide.load.DecodeFormat
 import com.shuai.R
 import com.shuai.adapter.main.MainActivitysRecyclerViewAdapter
 import com.shuai.base.BaseActivity
-import com.shuai.model.bean.ReceiveDTO
-import com.shuai.model.gen.GreenDaoManager
 import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
 import com.shuai.utils.Config
 import kotlinx.android.synthetic.main.activity_mains.*
-import org.json.JSONObject
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.IOException
+
 
 /**
  * Created by jiangyingjun on 2017/9/25.
@@ -94,7 +98,15 @@ class MainActivitys :BaseActivity(){
 
 
 
-            NetWorks.facePPdetectApi(Config.facePP_Detect,params_json,aa)
+
+
+            var  imgFile=File(String(getBitmapByte( BitmapFactory.decodeResource(resources,R.drawable.luhan))))
+//             创建RequestBody，传入参数："multipart/form-data"，File
+            val requestImgFile = RequestBody.create(MediaType.parse("multipart/form-data"), imgFile)
+            // 创建MultipartBody.Part，用于封装文件数据
+            val requestImgPart = MultipartBody.Part.createFormData("img_file", imgFile.getName(), requestImgFile)
+
+            NetWorks.facePPdetectApi(Config.facePP_Detect,params_json,requestImgPart,aa)
 
 
         }
@@ -153,9 +165,6 @@ class MainActivitys :BaseActivity(){
 
 
     }
-
-
-
     private fun loadMoreData(){
 
 
@@ -163,6 +172,24 @@ class MainActivitys :BaseActivity(){
 
 
 
+    }
+
+
+    private fun getBitmapByte(bitmap: Bitmap): ByteArray {
+        val out = ByteArrayOutputStream()
+        //参数1转换类型，参数2压缩质量，参数3字节流资源
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+        try {
+            out.flush()
+            out.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        var  byte=Base64.encode(out.toByteArray(),Base64.NO_WRAP)
+
+        return byte
+
+//        return out.toByteArray()
     }
 
 
