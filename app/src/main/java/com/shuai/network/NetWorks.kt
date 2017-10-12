@@ -5,6 +5,7 @@ import com.shuai.model.bean.ReceiveDTO
 import com.shuai.model.bean.RequestDTO
 import com.shuai.utils.Config
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.http.*
@@ -37,10 +38,10 @@ object NetWorks {
         @POST("/login/login")
         fun login(@Body requestDTO: RequestDTO):Observable<ReceiveDTO>
 
-        @FormUrlEncoded
+//        @FormUrlEncoded
         @Multipart
         @POST
-        fun FacePPdetectApi(@Url url: String,@FieldMap map: Map<String,String>,@Part img_file: MultipartBody.Part):Observable<String>
+        fun FacePPdetectApi(@Url url: String, @Part("api_key") api_key: RequestBody, @Part("api_secret") api_secret:RequestBody, @Part("return_landmark")return_landmark:RequestBody, @Part("return_attributes")return_attributes:RequestBody, @Part img_file: MultipartBody.Part):Observable<String>
 
 
         @POST("/start/img")
@@ -65,10 +66,6 @@ object NetWorks {
         setSubscribe(service.startAppPacture(), observer)
     }
 
-
-
-
-
 //    fun  downLoadFile (url: String,subscriber:Subscriber){
 //        service!!.downLoadFileNet(url).
 //
@@ -79,10 +76,7 @@ object NetWorks {
     }
 
 
-    fun facePPdetectApi(url: String, map: Map<String, String>,img_file: MultipartBody.Part, observer:Observer<String>){
-        setSubscribe(service.FacePPdetectApi(url,map,img_file),observer)
-
+    fun facePPdetectApi(url: String, api_key: RequestBody,api_secret: RequestBody,return_landmark:RequestBody,return_attributes:RequestBody,img_file: MultipartBody.Part, observer:Observer<String>){
+        setSubscribe(service.FacePPdetectApi(url,api_key,api_secret,return_landmark,return_attributes,img_file),observer)
     }
-
-
 }

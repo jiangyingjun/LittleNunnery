@@ -1,8 +1,10 @@
 package com.shuai.activity.home
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import com.bumptech.glide.load.DecodeFormat
 import com.shuai.R
 import com.shuai.adapter.main.MainActivitysRecyclerViewAdapter
 import com.shuai.base.BaseActivity
+import com.shuai.face.FacePPActivity
 import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
 import com.shuai.utils.Config
@@ -54,7 +57,8 @@ class MainActivitys :BaseActivity(){
 
 
         mains_btn.setOnClickListener {
-
+            var intent=Intent(this@MainActivitys,FacePPActivity::class.java)
+            startActivity(intent)
 //            Thread(Runnable { kotlin.run {
 //
 //                mHandler.post(Runnable {
@@ -70,43 +74,8 @@ class MainActivitys :BaseActivity(){
 //                })
 //
 //            } }).start()
-            var aa=object : NetWorksSubscriber<String>() {
-                override fun onCompleted() {
-                    super.onCompleted()
-
-                    Log.e("jyj-->","oncompleted")
-
-                }
-
-                override fun onNext(s: String) {
-                    super.onNext(s)
-                    Log.e("jyj-->",s)
-                    Toast.makeText(this@MainActivitys,s, Toast.LENGTH_LONG).show()
-                }
-
-                override fun onError(e: Throwable) {
-                    super.onError(e)
-//                Log.e("jyj-->",e.toString())
-                    Toast.makeText(this@MainActivitys,e.toString(), Toast.LENGTH_LONG).show()
-                }
-            }
-            var params_json=HashMap<String,String>()
-
-            params_json.put("api_key",Config.FACE_PP_API_KEY)
-            params_json.put("api_secret",Config.FACE_PP_API_SECRET)
-            params_json.put("image_url","https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507530011&di=bfb2fd33b8eca2f3713b363d9a7b4de8&src=http://image.uczzd.cn/16729767241092375647.jpeg?id=0&from=export")
 
 
-
-
-
-            var  imgFile=File(String(getBitmapByte( BitmapFactory.decodeResource(resources,R.drawable.luhan))))
-//             创建RequestBody，传入参数："multipart/form-data"，File
-            val requestImgFile = RequestBody.create(MediaType.parse("multipart/form-data"), imgFile)
-            // 创建MultipartBody.Part，用于封装文件数据
-            val requestImgPart = MultipartBody.Part.createFormData("img_file", imgFile.getName(), requestImgFile)
-
-            NetWorks.facePPdetectApi(Config.facePP_Detect,params_json,requestImgPart,aa)
 
 
         }
@@ -170,27 +139,8 @@ class MainActivitys :BaseActivity(){
 
 
 
-
-
     }
 
-
-    private fun getBitmapByte(bitmap: Bitmap): ByteArray {
-        val out = ByteArrayOutputStream()
-        //参数1转换类型，参数2压缩质量，参数3字节流资源
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-        try {
-            out.flush()
-            out.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        var  byte=Base64.encode(out.toByteArray(),Base64.NO_WRAP)
-
-        return byte
-
-//        return out.toByteArray()
-    }
 
 
 }
