@@ -1,6 +1,7 @@
 package com.shuai
 
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +11,7 @@ import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
 import kotlinx.android.synthetic.main.activity_test_ye_gou.*
 
-class TestYeGouActivity : BaseActivity(), View.OnClickListener {
+class TestYeGouActivity : Activity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

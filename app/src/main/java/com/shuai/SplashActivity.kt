@@ -1,5 +1,6 @@
 package com.shuai
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import org.json.JSONObject
 
 
-class SplashActivity : BaseActivity(), View.OnClickListener {
+class SplashActivity : Activity(), View.OnClickListener {
 
 /**
 *    初始化数据后面追加 ？ 表示数据可以为空 sample   Int?

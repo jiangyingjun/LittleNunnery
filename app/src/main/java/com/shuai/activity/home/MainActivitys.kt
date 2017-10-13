@@ -1,5 +1,6 @@
 package com.shuai.activity.home
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -32,7 +33,7 @@ import java.io.IOException
 /**
  * Created by jiangyingjun on 2017/9/25.
  */
-class MainActivitys :BaseActivity(){
+class MainActivitys : Activity(){
 
 
     var mHandler=object:Handler(){

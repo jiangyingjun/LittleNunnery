@@ -13,5 +13,8 @@
         android:layout_marginLeft="10dp"
         android:text="face++"/>
 
-
+    <TextView
+        android:id="@+id/facepp_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

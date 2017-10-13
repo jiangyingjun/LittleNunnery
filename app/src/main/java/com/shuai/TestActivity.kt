@@ -1,6 +1,7 @@
 package com.shuai
 
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_test.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TestActivity : BaseActivity(), MyScrollView.OnScrollListener {
+class TestActivity : Activity(), MyScrollView.OnScrollListener {
 
 
     val mHanlder=object :Handler(){

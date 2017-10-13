@@ -1,19 +1,29 @@
 package com.shuai
 
-import com.google.gson.Gson
-import com.shuai.model.bean.ReceiveDTO
+import com.jude.beam.bijection.Presenter
+import com.jude.beam.expansion.BeamBaseActivity
+import com.shuai.model.dao.User
+import com.shuai.model.gen.GreenDaoManager
+import com.shuai.model.gen.UserDao
 
 /**
- * Created by reacmedia on 2017/10/6.
+ * Created by jiangyingjun on 2017/10/9.
  */
 
-class Test {
+class Test<T : Presenter<*>> : BeamBaseActivity<T>() {
 
 
-    internal fun `fun`() {
+    fun fun1() {
 
-        Gson().fromJson("slkkh", ReceiveDTO::class.java)
 
+        val userDao = GreenDaoManager.getInstance().daoSession.userDao
+
+
+        val user = User()
+        user.age = 11
+        user.name = "aaaa"
+        userDao.insert(user)
 
     }
+
 }

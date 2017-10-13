@@ -182,6 +182,12 @@ dependencies {
 
     compile 'com.alibaba:fastjson:1.2.39'
 
+    // google的gson
+    compile 'com.google.code.gson:gson:2.7'
+
+    // mvp模式的基类
+    compile 'com.jude:beam:3.0.1'
+
     //    /*检测内存泄漏*/
 
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
