@@ -2,32 +2,20 @@ package com.shuai.activity.home
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.Message
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Base64
 import android.util.Log
 import android.widget.Toast
-import com.bumptech.glide.load.DecodeFormat
 import com.shuai.R
+import com.shuai.SplashActivity
 import com.shuai.adapter.main.MainActivitysRecyclerViewAdapter
-import com.shuai.base.BaseActivity
 import com.shuai.face.FacePPActivity
-import com.shuai.network.NetWorks
-import com.shuai.network.NetWorksSubscriber
-import com.shuai.utils.Config
+import com.shuai.model.dao.User
 import kotlinx.android.synthetic.main.activity_mains.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.IOException
+import org.greenrobot.greendao.annotation.Entity
 
 
 /**
@@ -50,7 +38,7 @@ class MainActivitys : Activity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mains)
 
-
+//        window.setBackgroundDrawable(null)
         initView()
 
 
@@ -58,8 +46,23 @@ class MainActivitys : Activity(){
 
 
         mains_btn.setOnClickListener {
-            var intent=Intent(this@MainActivitys,FacePPActivity::class.java)
-            startActivity(intent)
+//            var intent=Intent(this@MainActivitys,FacePPActivity::class.java)
+//            startActivity(intent)
+
+            for (method in User::class.java.classLoader.loadClass("com.shuai.model.dao.User").classes){
+
+                if (method.isAnnotationPresent(Entity::class.java)){
+
+                    for (anno in method.declaredAnnotations){
+
+                        Log.e("jyj-->","annotation in method-->"+method.toString()+":"+anno.toString())
+                    }
+
+                }
+
+            }
+
+
 //            Thread(Runnable { kotlin.run {
 //
 //                mHandler.post(Runnable {
@@ -75,9 +78,6 @@ class MainActivitys : Activity(){
 //                })
 //
 //            } }).start()
-
-
-
 
         }
     }
