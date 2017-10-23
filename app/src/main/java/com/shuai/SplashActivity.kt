@@ -10,15 +10,12 @@ import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import com.shuai.activity.home.MainActivitys
-import com.shuai.base.BaseActivity
 import com.shuai.model.bean.LocalEntry
 import com.shuai.model.bean.ReceiveDTO
-import com.shuai.model.dao.User
 import com.shuai.network.NetWorks
 import com.shuai.network.NetWorksSubscriber
 import com.shuai.utils.glide.GlideImageLoader
 import kotlinx.android.synthetic.main.activity_splash.*
-import org.greenrobot.greendao.annotation.Entity
 import org.json.JSONObject
 
 
