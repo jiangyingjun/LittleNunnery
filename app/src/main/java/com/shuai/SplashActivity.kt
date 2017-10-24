@@ -59,7 +59,7 @@ class SplashActivity : Activity(), View.OnClickListener {
 
 
 
-        mHandler.sendEmptyMessageDelayed(1, 1200)
+//        mHandler.sendEmptyMessageDelayed(1, 1200)
 
 }
 
@@ -80,8 +80,8 @@ class SplashActivity : Activity(), View.OnClickListener {
         when(v!!.id){
             R.id.sp_start_img->{
 
-                network()
-
+//                network()
+                Test().fun1()
             }
 
 

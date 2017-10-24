@@ -20,8 +20,6 @@ public class GreenDaoManager {
         mDaoMaster = new DaoMaster(mySQLiteOpenHelper.getWritableDb());
         mDaoSession = mDaoMaster.newSession();
 
-
-
     }
 
 

@@ -9,12 +9,6 @@ import org.greenrobot.greendao.database.Database;
 /**
  *   数据库的升级帮助类
  *
- * Modification History:
- * Date          Author     Version    Description
- * -----------------------------------------------------------
- * 2016-8-18    mafushun      5.4.8      1.0
- * ------------------------
- * Why & What is modified:
  *    新建的表，需要在MigrationHelper.migrate 添加xxxDao.class
  */
 public class MySQLiteOpenHelper extends DaoMaster.OpenHelper {
